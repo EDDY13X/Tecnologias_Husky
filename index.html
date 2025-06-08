@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologías Husky - Reparación y Accesorios para Celulares</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Custom Styles for Dark/Gold Theme */
+        :root {
+            --gold: #D4AF37; /* A classic gold color */
+            --dark-bg: #121212;
+            --dark-card: #1E1E1E;
+            --dark-header: rgba(30, 30, 30, 0.8);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: #e5e7eb; /* gray-200 */
+        }
+
+        .hero-bg {
+            position: relative; /* Needed for the pseudo-element */
+            overflow: hidden; /* To contain the blurred edges */
+            background-color: #000000;
+            background-image: radial-gradient(circle at 50% 0, rgba(212, 175, 55, 0.15), transparent 50%),
+                              linear-gradient(165deg, #111827 0%, #000000 70%);
+        }
+
+        /* Blurred logo background */
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            z-index: 0; /* Behind the content */
+            background-image: url('images/logo.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 65vw; /* Increased size */
+            filter: blur(6px); /* Reduced blur */
+            opacity: 0.15; /* Increased opacity */
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
+        .header-bg {
+            background-color: var(--dark-header);
+            backdrop-filter: blur(10px);
+        }
+
+        .text-gold {
+            color: var(--gold);
+        }
+        
+        .bg-gold {
+            background-color: var(--gold);
+        }
+        
+        .border-gold {
+            border-color: var(--gold);
+        }
+
+        .cta-button {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .cta-button.primary {
+            background-color: var(--gold);
+            color: #1E1E1E;
+        }
+        .cta-button.primary:hover {
+            background-color: #e6c04f;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
+        }
+
+        .cta-button.secondary {
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+        .cta-button.secondary:hover {
+            background-color: var(--gold);
+            color: #1E1E1E;
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: 0.75rem;
+            margin-bottom: 2rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .card {
+            background-color: var(--dark-card);
+            border: 1px solid #374151; /* gray-700 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+        
+        input:focus, textarea:focus {
+            --tw-ring-color: var(--gold) !important;
+            border-color: var(--gold) !important;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header id="header" class="header-bg shadow-lg fixed w-full top-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-3 text-2xl font-extrabold text-white">
+                <img src="images/logo.png" alt="Logo Tecnologías Husky" class="h-10 w-auto">
+                <span>Tecnologías Husky</span>
+            </a>
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#inicio" class="text-gray-300 hover:text-gold font-medium transition-colors">Inicio</a>
+                <a href="#servicios" class="text-gray-300 hover:text-gold font-medium transition-colors">Servicios</a>
+                <a href="#accesorios" class="text-gray-300 hover:text-gold font-medium transition-colors">Accesorios</a>
+                <a href="#contacto" class="text-gray-300 hover:text-gold font-medium transition-colors">Contacto</a>
+            </nav>
+            <a href="#contacto" class="hidden md:inline-block font-semibold px-5 py-2 rounded-lg cta-button primary">
+                Cotizar Reparación
+            </a>
+            <button id="mobile-menu-button" class="md:hidden text-2xl text-white">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-card">
+            <a href="#inicio" class="block py-3 px-6 text-gray-300 hover:bg-gray-800 hover:text-gold">Inicio</a>
+            <a href="#servicios" class="block py-3 px-6 text-gray-300 hover:bg-gray-800 hover:text-gold">Servicios</a>
+            <a href="#accesorios" class="block py-3 px-6 text-gray-300 hover:bg-gray-800 hover:text-gold">Accesorios</a>
+            <a href="#contacto" class="block py-3 px-6 text-gray-300 hover:bg-gray-800 hover:text-gold">Contacto</a>
+            <div class="p-4">
+                <a href="#contacto" class="w-full text-center block font-semibold px-5 py-3 rounded-lg cta-button primary">
+                    Cotizar Reparación
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="inicio" class="hero-bg pt-32 pb-24 text-white">
+            <!-- The content container needs relative positioning and a z-index to be on top of the ::before pseudo-element -->
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-white">Soluciones <span class="text-gold">premium</span> para tu vida móvil</h1>
+                    <p class="text-lg md:text-xl text-gray-300 mb-10">Reparamos tu celular con la máxima calidad y elegancia. Descubre nuestra gama de accesorios para proteger y potenciar tu dispositivo.</p>
+                    <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#servicios" class="cta-button primary font-bold px-8 py-4 rounded-lg text-lg">
+                            <i class="fas fa-wrench mr-2"></i>Ver Servicios
+                        </a>
+                        <a href="#accesorios" class="cta-button secondary font-bold px-8 py-4 rounded-lg text-lg">
+                            <i class="fas fa-mobile-alt mr-2"></i>Ver Accesorios
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="servicios" class="py-20 bg-black">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center text-white section-title">Nuestros Servicios de Reparación</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-12">
+                    <!-- Service Cards -->
+                    <div class="card p-8 rounded-xl text-center">
+                        <div class="text-5xl text-gold mb-4"><i class="fas fa-mobile-screen-button"></i></div>
+                        <h3 class="text-2xl font-bold mb-2 text-white">Cambio de Pantalla</h3>
+                        <p class="text-gray-400">¿Pantalla rota o con fallos? La reemplazamos con componentes de alta calidad, dejando tu celular como nuevo.</p>
+                    </div>
+                    <div class="card p-8 rounded-xl text-center">
+                        <div class="text-5xl text-gold mb-4"><i class="fas fa-battery-full"></i></div>
+                        <h3 class="text-2xl font-bold mb-2 text-white">Reemplazo de Batería</h3>
+                        <p class="text-gray-400">Si tu batería ya no dura, la cambiamos por una nueva para que recuperes la autonomía de tu dispositivo.</p>
+                    </div>
+                    <div class="card p-8 rounded-xl text-center">
+                        <div class="text-5xl text-gold mb-4"><i class="fas fa-tint"></i></div>
+                        <h3 class="text-2xl font-bold mb-2 text-white">Daños por Líquidos</h3>
+                        <p class="text-gray-400">Realizamos limpieza y diagnóstico profesional para recuperar celulares mojados o con humedad.</p>
+                    </div>
+                    <div class="card p-8 rounded-xl text-center">
+                        <div class="text-5xl text-gold mb-4"><i class="fas fa-charging-station"></i></div>
+                        <h3 class="text-2xl font-bold mb-2 text-white">Problemas de Carga</h3>
+                        <p class="text-gray-400">Reparamos o reemplazamos el puerto de carga para que nunca te quedes sin energía.</p>
+                    </div>
+                    <div class="card p-8 rounded-xl text-center">
+                        <div class="text-5xl text-gold mb-4"><i class="fas fa-camera"></i></div>
+                        <h3 class="text-2xl font-bold mb-2 text-white">Reparación de Cámaras</h3>
+                        <p class="text-gray-400">¿Fotos borrosas? Solucionamos problemas con las cámaras frontal y trasera de tu equipo.</p>
+                    </div>
+                    <div class="card p-8 rounded-xl text-center">
+                        <div class="text-5xl text-gold mb-4"><i class="fas fa-microchip"></i></div>
+                        <h3 class="text-2xl font-bold mb-2 text-white">Diagnóstico General</h3>
+                        <p class="text-gray-400">Si no sabes qué le pasa a tu celular, lo revisamos a fondo para darte una solución precisa y honesta.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Accessories Section -->
+        <section id="accesorios" class="py-20 bg-dark-bg">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center text-white section-title">Accesorios de Alta Gama</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+                    <!-- Accessory Cards -->
+                    <div class="card rounded-lg overflow-hidden">
+                        <img src="https://placehold.co/400x300/121212/D4AF37?text=Fundas" alt="Fundas para celular" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-white">Fundas y Protectores</h3>
+                            <p class="text-gray-400 text-sm">Protege tu inversión con estilo. Gran variedad de diseños y materiales.</p>
+                        </div>
+                    </div>
+                    <div class="card rounded-lg overflow-hidden">
+                        <img src="https://placehold.co/400x300/121212/D4AF37?text=Cargadores" alt="Cargadores y cables" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-white">Cargadores y Cables</h3>
+                            <p class="text-gray-400 text-sm">Carga rápida y segura. Cables certificados de alta durabilidad.</p>
+                        </div>
+                    </div>
+                    <div class="card rounded-lg overflow-hidden">
+                        <img src="https://placehold.co/400x300/121212/D4AF37?text=Micas" alt="Micas de cristal" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-white">Micas de Cristal</h3>
+                            <p class="text-gray-400 text-sm">La mejor protección contra rayones y golpes para tu pantalla.</p>
+                        </div>
+                    </div>
+                    <div class="card rounded-lg overflow-hidden">
+                        <img src="https://placehold.co/400x300/121212/D4AF37?text=Audio" alt="Audífonos" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-white">Audífonos y Audio</h3>
+                            <p class="text-gray-400 text-sm">Disfruta tu música con la mejor calidad de sonido. Alámbricos e inalámbricos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section id="testimonios" class="py-20 bg-black">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center text-white section-title">Lo que dicen nuestros clientes</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 max-w-6xl mx-auto">
+                    <!-- Testimonials -->
+                    <div class="card p-8 rounded-xl">
+                        <div class="flex items-center mb-4">
+                            <img src="https://placehold.co/100x100/1E1E1E/e5e7eb?text=J.P." class="w-16 h-16 rounded-full mr-4 border-2 border-gold" alt="Cliente 1">
+                            <div>
+                                <p class="font-bold text-lg text-white">Juan Pérez</p>
+                                <div class="text-gold"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 italic">"¡Servicio increíblemente rápido! Dejé mi celular con la pantalla rota y en menos de una hora estaba listo. ¡Totalmente recomendados!"</p>
+                    </div>
+                    <div class="card p-8 rounded-xl">
+                        <div class="flex items-center mb-4">
+                            <img src="https://placehold.co/100x100/1E1E1E/e5e7eb?text=M.G." class="w-16 h-16 rounded-full mr-4 border-2 border-gold" alt="Cliente 2">
+                            <div>
+                                <p class="font-bold text-lg text-white">María García</p>
+                                <div class="text-gold"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 italic">"La atención es excelente y muy profesional. Me explicaron el problema de mi batería y lo solucionaron al momento. ¡Muy confiables!"</p>
+                    </div>
+                    <div class="card p-8 rounded-xl">
+                        <div class="flex items-center mb-4">
+                            <img src="https://placehold.co/100x100/1E1E1E/e5e7eb?text=C.S." class="w-16 h-16 rounded-full mr-4 border-2 border-gold" alt="Cliente 3">
+                            <div>
+                                <p class="font-bold text-lg text-white">Carlos Sánchez</p>
+                                <div class="text-gold"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 italic">"Compré una funda y una mica de cristal aquí. La calidad es superior a otras que he tenido y me ayudaron a instalarla sin costo extra."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contacto" class="py-20 bg-dark-bg">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center text-white section-title">Contáctanos</h2>
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto items-start">
+                    <!-- Form -->
+                    <div class="card p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold mb-6 text-white">Envíanos un mensaje</h3>
+                        <form action="#" method="POST">
+                            <div class="mb-5">
+                                <label for="name" class="block text-gray-300 font-medium mb-2">Nombre</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2" required>
+                            </div>
+                             <div class="mb-5">
+                                <label for="email" class="block text-gray-300 font-medium mb-2">Correo Electrónico</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2" required>
+                            </div>
+                             <div class="mb-6">
+                                <label for="message" class="block text-gray-300 font-medium mb-2">Mensaje</label>
+                                <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2" required></textarea>
+                            </div>
+                            <button type="submit" class="w-full font-bold py-3 rounded-lg cta-button primary">
+                                Enviar Mensaje
+                            </button>
+                        </form>
+                    </div>
+                    <!-- Contact Info & Map -->
+                    <div class="space-y-8">
+                        <div class="card p-8 rounded-xl">
+                             <h3 class="text-2xl font-bold mb-4 text-white">Información de Contacto</h3>
+                             <div class="space-y-4 text-lg text-gray-300">
+                                 <p class="flex items-center"><i class="fas fa-map-marker-alt text-gold w-6 mr-3"></i>Av. Siempre Viva 123, Col. Centro</p>
+                                 <p class="flex items-center"><i class="fas fa-phone text-gold w-6 mr-3"></i>(55) 1234-5678</p>
+                                 <p class="flex items-center"><i class="fab fa-whatsapp text-green-500 w-6 mr-3"></i>(55) 8765-4321</p>
+                                 <p class="flex items-center"><i class="fas fa-envelope text-gold w-6 mr-3"></i>contacto@tecnologiashusky.com</p>
+                             </div>
+                        </div>
+                        <div class="rounded-xl overflow-hidden h-80 border-2 border-gold/30">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.493339391039!2d-99.1353986850933!3d19.43414998688329!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f92f75a7457f%3A0x9a2b3c4f9f4b5d4!2sPalacio%20de%20Bellas%20Artes!5e0!3m2!1ses-419!2smx!4v1678833959123!5m2!1ses-419!2smx" 
+                                width="100%" 
+                                height="100%" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade"
+                                class="grayscale invert brightness-90">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- About -->
+                <div class="md:col-span-2">
+                    <a href="#" class="flex items-center space-x-3 text-2xl font-extrabold mb-4">
+                        <img src="images/logo.png" alt="Logo Tecnologías Husky" class="h-10 w-auto">
+                        <span>Tecnologías Husky</span>
+                    </a>
+                    <p class="text-gray-400">Tu centro de confianza para la reparación de celulares y la venta de accesorios de alta calidad. Nuestra misión es devolverle la vida a tus dispositivos con un servicio rápido, profesional y garantizado.</p>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-white">Navegación</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#inicio" class="text-gray-400 hover:text-gold transition-colors">Inicio</a></li>
+                        <li><a href="#servicios" class="text-gray-400 hover:text-gold transition-colors">Servicios</a></li>
+                        <li><a href="#accesorios" class="text-gray-400 hover:text-gold transition-colors">Accesorios</a></li>
+                        <li><a href="#contacto" class="text-gray-400 hover:text-gold transition-colors">Contacto</a></li>
+                    </ul>
+                </div>
+                <!-- Social Media -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-white">Síguenos</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-gold text-2xl transition-colors"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-gold text-2xl transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-gold text-2xl transition-colors"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-6 text-center text-gray-500 text-sm">
+                <p>&copy; <span id="current-year"></span> Tecnologías Husky. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            const header = document.getElementById('header');
+
+            // Toggle mobile menu
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const icon = mobileMenuButton.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+            
+            // Close mobile menu when a link is clicked
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    const icon = mobileMenuButton.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+
+            // Adjust header style on scroll
+            const handleScroll = () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('py-2');
+                    header.classList.remove('py-3');
+                } else {
+                    header.classList.add('py-3');
+                    header.classList.remove('py-2');
+                }
+            };
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // Initial check
+
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+    </script>
+
+</body>
+</html>
